@@ -1,0 +1,29 @@
+{
+  "name": "unify-cli",
+  "version": "1.0.0",
+  "description": "An engineering tool",
+  "main": "index.js",
+  "bin": {
+    "unify": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webxiaoma/unify-cli.git"
+  },
+  "author": "webxiaoma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webxiaoma/unify-cli/issues"
+  },
+  "homepage": "https://github.com/webxiaoma/unify-cli#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.2.0",
+    "download-git-repo": "^3.0.2",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.1.3"
+  }
+}

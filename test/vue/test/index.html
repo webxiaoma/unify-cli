@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../lib/static/css/calendar.min.css">
+    <title>test</title>
+    
+    <style>
+       #root{
+          position: relative;
+          left:10px;
+          top:10px;
+       }
+       .data_msg p{
+          padding-left:30px;
+       }
+    </style>
+</head>
+<body>
+     <div>
+        <input type="text"  id="root"/>
+     </div>
+     <div style="position: relative;top:0px;left: 400px;">
+        <div class="data_msg">
+            选择的日期信息
+           <p><span>当年的生肖属性：</span><span id="msg1"></span></p>
+           <p><span>当日星座：</span><span id="msg2"></span></p>
+           <p><span>是否是闰年：</span><span id="msg3"></span></p>
+           <p><span>二十四节气：</span><span id="msg4"></span></p>
+           <p><span>字符串星期：</span><span id="msg5"></span></p>
+           <p><span>阳历节日：</span><span id="msg6"></span></p>
+           <p><span>阴历节日：</span><span id="msg7"></span></p>
+       </div>
+        <p><span>日期改变了：</span><span id="change"></span></p>
+        <p><span>右击天数状态：</span><span id="rightClick"></span></p>
+     </div>
+
+     <script src="../lib/js/calendar.min.js"></script>
+     <script>
+          var  timeLayout = new Calendar("#root",{
+                    value:'',  // 日期初始值
+                    format:'-', // 日期年月日分隔符
+                    isFillZero:true, // 月，日 是否补0, 默认补0
+                    nextMonthBtnText:'',  // 上一年按钮名字
+                    nextYearBtnText:'',
+                    prevMonthBtnText:'',
+                    nextMonthBtnText:'',
+                    max:'2019-4-28', 
+                    min:'2019-2-28',
+                    isHoliday:true, // 是否显示休息
+                    isFestival:true, // 是否显示节日
+                    isLunar:true, // 是否显示阴历
+                    isSolarTerm:true, // 是否显示节气
+                    change:function(val){ // 改变时触发
+                        document.getElementById("change").innerHTML = val.dataStr
+                    },
+                    click:function(day){ // 点击回调函数
+                        document.getElementById("msg1").innerHTML = day.dayMsg.Animal;
+                        document.getElementById("msg2").innerHTML = day.dayMsg.astro;
+                        document.getElementById("msg3").innerHTML = day.dayMsg.isLeap?"是":"否";
+                        document.getElementById("msg4").innerHTML = day.dayMsg.Term?day.dayMsg.Term:"暂无";
+                        document.getElementById("msg5").innerHTML = day.dayMsg.ncWeek;
+                        document.getElementById("msg6").innerHTML = day.dayMsg.SFtv?day.dayMsg.SFtv:"暂无";;
+                        document.getElementById("msg7").innerHTML = day.dayMsg.LFtv?day.dayMsg.LFtv:"暂无";;
+                    },
+                    rightHandClick:function(day,e){ // 右键回调函数
+                        document.getElementById("rightClick").innerHTML = "右击了日期"
+                    },
+                    beforeCreateDay:function(dayMsg){  // 天数创建之前
+                        // console.log("创建天数之前")
+                    },
+                    afterCreateDay:function(day){  // 天数创建之后
+                        // console.log("创建天数之后")
+                    },
+               })
+     </script>
+</html>
